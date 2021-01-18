@@ -1,5 +1,5 @@
 # For starting the server PHP : 
-php -S localhost:3000
+php -S localhost:3000 -t public
 
 # For install Composer : 
 composer init -n
