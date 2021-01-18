@@ -1,3 +1,4 @@
 <?php
 
-//Start coding
+$name = $_GET["name"];
+printf("hello %s", $name);
