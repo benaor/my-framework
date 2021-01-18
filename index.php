@@ -1,4 +1,7 @@
 <?php
 
-$name = $_GET["name"];
-printf("hello %s", $name);
+$name = isset($_GET["name"]) ? $_GET["name"] : "world";
+
+header('content-type: text/html; charset=utf-8');
+
+printf("hello %s", htmlspecialchars($name, ENT_QUOTES));
