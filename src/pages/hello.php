@@ -1,5 +1,1 @@
-<?php
-$name = $request->query->get("name", "world");
-?>
-
-<h1> Hello <?= htmlspecialchars($name, ENT_QUOTES); ?> </h1>
+<h1> Hello <?= htmlspecialchars(isset($name) ? $name : "world", ENT_QUOTES); ?> </h1>
