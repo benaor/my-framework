@@ -3,3 +3,6 @@ php -S localhost:3000
 
 # For install Composer : 
 composer init -n
+
+# For create new HTML page : 
+Add his path in index.php (in Array $map)
