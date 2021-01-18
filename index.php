@@ -1,7 +1,18 @@
 <?php
 
-$name = isset($_GET["name"]) ? $_GET["name"] : "world";
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-header('content-type: text/html; charset=utf-8');
+//Install autolader
+require __DIR__ . '/vendor/autoload.php';
 
-printf("Hello %s", htmlspecialchars($name, ENT_QUOTES));
+//Call request composant
+$request = Request::createFromGlobals();
+
+$name = $request->query->get("name", "world");
+
+$response = new Response(); 
+$response->headers->set('content-type', 'text/html; charset=utf-8');
+$response->setContent(sprintf("Hello %s", htmlspecialchars($name, ENT_QUOTES)));
+
+$response->send();

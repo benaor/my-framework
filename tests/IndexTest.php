@@ -4,12 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 class IndexText extends TestCase
 {
-    /**
-     * @runInSeparateProcess
-     * @return void
-     * @throws ExpectationFailedException
-     * @throws InvalidArgumentException
-     */
+
     public function testHello()
     {
         $_GET['name'] = 'Fabien';
