@@ -11,7 +11,8 @@ $response = new Response();
 
 $map = [
     '/hello' => 'hello.php',
-    '/bye' => 'bye.php'
+    '/bye' => 'bye.php',
+    '/about' => 'about.php'
 ];
 
 $pathInfo = $request->getPathInfo();
