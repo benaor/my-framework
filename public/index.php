@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
@@ -18,16 +19,16 @@ $context->fromRequest($request);
 
 //Create UrlMatcher
 $urlMatcher = new UrlMatcher($routes, $context);
+$controllerResolver = new ControllerResolver();
 
 try {
-    $resultat  = ($urlMatcher->match($request->getPathInfo()));
+    $resultat = ($urlMatcher->match($request->getPathInfo()));
+
     $request->attributes->add($resultat);
 
-    $className  = substr($resultat['_controller'], 0, strpos($resultat['_controller'], '@')); 
-    $methodName = substr($resultat['_controller'], strpos($resultat['_controller'], '@') +1); 
-    $controller = [new $className, $methodName];
+    $controller = $controllerResolver->getController($request);
 
-    $response = call_user_func($controller, $request); 
+    $response = call_user_func($controller, $request);
 } catch (ResourceNotFoundException $e) {
     $response = new Response("404 NOT FOUND", 404);
 } catch (Exception $e) {
