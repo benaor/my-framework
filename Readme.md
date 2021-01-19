@@ -7,4 +7,4 @@ composer init -n
 # For create new HTML page : 
 Create page with .php extension in '/src/page'
 Create route in 'src/routes.php'
-Create a function which contains the rendering, and indicate it in the "_controller" field of the routes.php file
+Create a function which contains the rendering, and indicate it in the field of the routes.php file

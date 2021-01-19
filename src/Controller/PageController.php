@@ -11,4 +11,9 @@ class PageController
         include __DIR__ . '/../pages/about.php';
         return new Response(ob_get_clean());
     }
+    public function contact(){
+        ob_start(); 
+        include __DIR__ . '/../pages/contact.php';
+        return new Response(ob_get_clean());
+    }
 }
