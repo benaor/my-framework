@@ -14,7 +14,7 @@ $routes->add("bye", new Route('/bye', [
     '_controller' => [new App\Controller\GreetingController, 'bye']
 ]));
 $routes->add("about", new Route('/about', [
-    '_controller' => [new App\Controller\PageController, 'about']
+    '_controller' => 'App\Controller\PageController@about'
 ]));
 
 return $routes;

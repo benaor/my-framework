@@ -20,9 +20,14 @@ $context->fromRequest($request);
 $urlMatcher = new UrlMatcher($routes, $context);
 
 try {
-    $resultat = ($urlMatcher->match($request->getPathInfo()));
+    $resultat  = ($urlMatcher->match($request->getPathInfo()));
+
+    $className  = substr($resultat['_controller'], 0, strpos($resultat['_controller'], '@')); 
+    $methodName = substr($resultat['_controller'], strpos($resultat['_controller'], '@') +1); 
+    $controller = [new $className, $methodName];
+
     $request->attributes->add($resultat);
-    $response = call_user_func($resultat['_controller'], $request); 
+    $response = call_user_func($controller, $request); 
 } catch (ResourceNotFoundException $e) {
     $response = new Response("404 NOT FOUND", 404);
 } catch (Exception $e) {
