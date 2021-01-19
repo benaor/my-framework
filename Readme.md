@@ -2,7 +2,7 @@
 php -S localhost:3000 -t public
 
 # For install Composer : 
-composer init -n
+composer init -n \n
 composer install
 
 # For create new HTML page : 
