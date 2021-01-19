@@ -10,7 +10,9 @@ $routes->add("hello", new Route('/hello/{name}', [
     'name' => 'world',
     '_controller' => [new App\Controller\GreetingController, 'hello']
     ] ));
-$routes->add("bye", new Route('/bye'));
+$routes->add("bye", new Route('/bye', [
+    '_controller' => [new App\Controller\GreetingController, 'bye']
+]));
 $routes->add("about", new Route('/about'));
 
 return $routes;
