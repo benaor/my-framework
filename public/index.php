@@ -20,11 +20,9 @@ $context->fromRequest($request);
 $urlMatcher = new UrlMatcher($routes, $context);
 
 try {
-    extract($urlMatcher->match($request->getPathInfo()));
-    ob_start();
-    include __DIR__ . '/../src/pages/' . $_route . ".php";
-    $response = new Response(ob_get_clean());
-
+    $resultat = ($urlMatcher->match($request->getPathInfo()));
+    $request->attributes->add($resultat);
+    $response = call_user_func($resultat['_controller'], $request); 
 } catch (ResourceNotFoundException $e) {
     $response = new Response("404 NOT FOUND", 404);
 } catch (Exception $e) {
