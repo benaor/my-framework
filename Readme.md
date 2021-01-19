@@ -6,4 +6,4 @@ composer init -n
 
 # For create new HTML page : 
 Create page with .php extension in '/src/page'
-Add his path in index.php (in Array $map)
+Create route in 'src/routes.php'
