@@ -19,7 +19,6 @@ class GreetingController {
         ob_start(); 
         include __DIR__ . '/../pages/bye.php';
         return new Response(ob_get_clean());
-
     }
 
 }
